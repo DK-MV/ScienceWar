@@ -6,16 +6,21 @@ import java.util.List;
  * Represent the players workbench and am responsible for:
  * 1) executing the actions chosen by the player
  * 2) keeping track of which compounds the player has reserved
+ * 3) keep track of anything else related to the player.
  *
  *
  */
 
 public interface WorkBench {
-	public void executeAction();
+    void executeAction();
 
-	public List<ChemicalCompound> getReservedCompounds();
+    List<ChemicalCompound> getReservedCompounds();
 
-	public void addReservedCompounds();
+    void addReservedCompounds();
 
-	public void removeReservedCompounds();
+    void removeReservedCompounds();
+
+    int getMaxReservedCompounds();
+
+
 }
