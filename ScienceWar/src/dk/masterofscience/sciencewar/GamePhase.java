@@ -8,7 +8,7 @@ package dk.masterofscience.sciencewar;
  */
 public interface GamePhase {
 
-    public void execute();
+    public void execute(Game game);
 
     public boolean PhaseOver();
 

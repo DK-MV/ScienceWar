@@ -22,5 +22,8 @@ public interface WorkBench {
 
     int getMaxReservedCompounds();
 
+    List<Element> getElementsInStorage();
+
+    void addElementToStorage(Element element);
 
 }

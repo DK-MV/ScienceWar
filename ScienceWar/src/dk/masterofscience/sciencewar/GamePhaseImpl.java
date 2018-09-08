@@ -8,9 +8,11 @@ public class GamePhaseImpl implements GamePhase {
     }
 
     @Override
-    public void execute() {
-	// TODO Auto-generated method stub
-
+    public void execute(final Game game) {
+	for (final WorkBench workBench : game.getAllWorkBenches()) {
+	    workBench.addElementToStorage(new ElementImpl());
+	    workBench.addElementToStorage(new ElementImpl());
+	}
     }
 
     @Override

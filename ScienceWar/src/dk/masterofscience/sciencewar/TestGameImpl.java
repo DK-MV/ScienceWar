@@ -21,7 +21,7 @@ class TestGameImpl {
     }
 
     @Test
-    void allPlayersHave2TokensInitially() {
+    void allPlayersHave1TokenInitially() {
 	game = new GameImpl();
 	for (final WorkBench workBench : game.getAllWorkBenches()) {
 	    assertEquals(workBench.getMaxReservedCompounds(), 1);
@@ -30,7 +30,15 @@ class TestGameImpl {
 
     @Test
     void inDiscoveryPhaseEachPlayerRecieve2Elements() {
-	// TODO
+	game = new GameImpl();
+	assertEquals(Phase.Discovery, game.getCurrentPhase());
+	for (final WorkBench workBench : game.getAllWorkBenches()) {
+	    assertEquals(2, workBench.getElementsInStorage().size());
+	}
+	game.executeGamePhase();
+	for (final WorkBench workBench : game.getAllWorkBenches()) {
+	    assertEquals(4, workBench.getElementsInStorage().size());
+	}
     }
 
     @Test
@@ -40,5 +48,7 @@ class TestGameImpl {
 	game.executeGamePhase();
 	assertEquals(Phase.Study, game.getCurrentPhase());
     }
+
+
 
 }

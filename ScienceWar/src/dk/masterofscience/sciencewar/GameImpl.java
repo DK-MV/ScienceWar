@@ -13,13 +13,10 @@ public class GameImpl implements Game {
 	// make 2 players
 	workbenches.add(new WorkBenchImpl());
 	workbenches.add(new WorkBenchImpl());
-
+	// add the game phases
 	gamePhases.add(new GamePhaseImpl(Phase.Discovery));
 	gamePhases.add(new GamePhaseImpl(Phase.Study));
 	currentGamePhaseNumber = 0;
-	// run though all phases
-
-	// evaluate winner and stop game if a winner has been found.
 
     }
 
@@ -48,7 +45,7 @@ public class GameImpl implements Game {
 
     @Override
     public void executeGamePhase() {
-	gamePhases.get(currentGamePhaseNumber).execute();
+	gamePhases.get(currentGamePhaseNumber).execute(this);
 	currentGamePhaseNumber++;
 	if (currentGamePhaseNumber >= gamePhases.size()) {
 	    currentGamePhaseNumber = 0;
