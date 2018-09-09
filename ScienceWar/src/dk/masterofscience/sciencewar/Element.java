@@ -1,5 +1,6 @@
 package dk.masterofscience.sciencewar;
 
-public interface Element {
+public enum Element {
+    Hydrogen, Carbon, Oxygen, Nitrogen, Calcium, Sulfur;
 
 }

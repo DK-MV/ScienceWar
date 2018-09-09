@@ -1,6 +1,7 @@
 package dk.masterofscience.sciencewar;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,23 @@ class TestGameImpl {
 	assertEquals(Phase.Study, game.getCurrentPhase());
     }
 
+    @Test
+    void firstDiscoveryPhasePlayer1IsStarting() {
+	game = new GameImpl();
+	assertEquals(Phase.Discovery, game.getCurrentPhase());
+	assertEquals(game.getAllWorkBenches().get(0), game.getStartingPlayer());
+    }
+
+    @Test
+    void secondDiscoveryPhasePlayer2IsStarting() {
+	game = new GameImpl();
+	assertEquals(Phase.Discovery, game.getCurrentPhase());
+	game.executeGamePhase();
+	assertFalse(Phase.Discovery == game.getCurrentPhase());
+	game.executeGamePhase();
+	assertEquals(Phase.Discovery, game.getCurrentPhase());
+	assertEquals(game.getAllWorkBenches().get(1), game.getStartingPlayer());
+    }
 
 
 }

@@ -7,8 +7,8 @@ public class WorkBenchImpl implements WorkBench {
     List<Element> elements = new ArrayList<>();
 
     public WorkBenchImpl() {
-	elements.add(new ElementImpl());
-	elements.add(new ElementImpl());
+	elements.add(Utils.randomEnum(Element.class));
+	elements.add(Utils.randomEnum(Element.class));
     }
 
     @Override

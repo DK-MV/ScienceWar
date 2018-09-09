@@ -7,6 +7,7 @@ public class GameImpl implements Game {
     List<WorkBench> workbenches = new ArrayList<WorkBench>();
     List<GamePhase> gamePhases = new ArrayList<GamePhase>();
     int currentGamePhaseNumber;
+    int startingPlayerNumber;
 
     public GameImpl() {
 	// initialize game
@@ -17,6 +18,7 @@ public class GameImpl implements Game {
 	gamePhases.add(new GamePhaseImpl(Phase.Discovery));
 	gamePhases.add(new GamePhaseImpl(Phase.Study));
 	currentGamePhaseNumber = 0;
+	startingPlayerNumber = 0;
 
     }
 
@@ -39,8 +41,7 @@ public class GameImpl implements Game {
 
     @Override
     public WorkBench getStartingPlayer() {
-	// TODO Auto-generated method stub
-	return null;
+	return workbenches.get(startingPlayerNumber);
     }
 
     @Override
@@ -48,10 +49,18 @@ public class GameImpl implements Game {
 	gamePhases.get(currentGamePhaseNumber).execute(this);
 	currentGamePhaseNumber++;
 	if (currentGamePhaseNumber >= gamePhases.size()) {
+	    // next round is starting
 	    currentGamePhaseNumber = 0;
+	    nextPlayer();
 	}
 
     }
 
 
+    private void nextPlayer() {
+	startingPlayerNumber++;
+	if (startingPlayerNumber >= workbenches.size()) {
+	    startingPlayerNumber = 0;
+	}
+    }
 }
