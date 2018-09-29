@@ -5,6 +5,7 @@ import java.util.List;
 
 public class WorkBenchImpl implements WorkBench {
     List<Element> elements = new ArrayList<>();
+    List<ChemicalCompound> compounds = new ArrayList<>();
 
     public WorkBenchImpl() {
 	elements.add(Utils.randomEnum(Element.class));
@@ -12,25 +13,24 @@ public class WorkBenchImpl implements WorkBench {
     }
 
     @Override
-    public void executeAction() {
-	// TODO Auto-generated method stub
+    public void executeAction(final Game game) {
+	if (game.getCurrentGamePhase().getPhaseType() == Phase.Study) {
+	    addReservedCompounds();
+	}
 
     }
 
     @Override
     public List<ChemicalCompound> getReservedCompounds() {
-	// TODO Auto-generated method stub
-	return null;
+	return compounds;
     }
 
-    @Override
-    public void addReservedCompounds() {
-	// TODO Auto-generated method stub
+    private void addReservedCompounds() {
+	compounds.add(new ChemicalCompoundImpl());
 
     }
 
-    @Override
-    public void removeReservedCompounds() {
+    private void removeReservedCompounds() {
 	// TODO Auto-generated method stub
 
     }

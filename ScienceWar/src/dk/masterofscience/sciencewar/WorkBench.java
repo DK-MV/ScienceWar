@@ -12,13 +12,9 @@ import java.util.List;
  */
 
 public interface WorkBench {
-    void executeAction();
+    void executeAction(Game game);
 
     List<ChemicalCompound> getReservedCompounds();
-
-    void addReservedCompounds();
-
-    void removeReservedCompounds();
 
     int getMaxReservedCompounds();
 

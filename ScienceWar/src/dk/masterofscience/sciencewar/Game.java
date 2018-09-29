@@ -16,10 +16,14 @@ public interface Game {
 
     public Phase getCurrentPhase();
 
+    public GamePhase getCurrentGamePhase();
+
     public List<WorkBench> getAllWorkBenches();
 
     public WorkBench getStartingPlayer();
 
     public void executeGamePhase();
+
+    public void executePlayerTurn();
 
 }

@@ -33,6 +33,7 @@ public class GameImpl implements Game {
 	return gamePhases.get(currentGamePhaseNumber).getPhaseType();
     }
 
+
     @Override
     public List<WorkBench> getAllWorkBenches() {
 
@@ -51,16 +52,28 @@ public class GameImpl implements Game {
 	if (currentGamePhaseNumber >= gamePhases.size()) {
 	    // next round is starting
 	    currentGamePhaseNumber = 0;
-	    nextPlayer();
+	    nextPlayerStartingPlayer();
 	}
 
     }
 
 
-    private void nextPlayer() {
+    private void nextPlayerStartingPlayer() {
 	startingPlayerNumber++;
 	if (startingPlayerNumber >= workbenches.size()) {
 	    startingPlayerNumber = 0;
 	}
+    }
+
+    @Override
+    public void executePlayerTurn() {
+	// TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public GamePhase getCurrentGamePhase() {
+	// TODO Auto-generated method stub
+	return gamePhases.get(currentGamePhaseNumber);
     }
 }

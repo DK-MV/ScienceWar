@@ -64,9 +64,28 @@ class TestGameImpl {
 	game.executeGamePhase();
 	assertFalse(Phase.Discovery == game.getCurrentPhase());
 	game.executeGamePhase();
+	// after discovery and study phase have been executed and we are back to
+	// discovery (2nd round start)
 	assertEquals(Phase.Discovery, game.getCurrentPhase());
 	assertEquals(game.getAllWorkBenches().get(1), game.getStartingPlayer());
     }
+
+    @Test
+    void inStudyPhasePlayersClaimCompounds() {
+	game = new GameImpl();
+	assertEquals(Phase.Discovery, game.getCurrentPhase());
+	game.executeGamePhase();
+	assertEquals(Phase.Study, game.getCurrentPhase());
+
+	int reservedCompounds;
+	for (final WorkBench workBench : game.getAllWorkBenches()) {
+	    reservedCompounds = workBench.getReservedCompounds().size();
+	    workBench.executeAction(game);
+	    assertEquals(reservedCompounds + 1, workBench.getReservedCompounds().size());
+	}
+
+    }
+
 
 
 }

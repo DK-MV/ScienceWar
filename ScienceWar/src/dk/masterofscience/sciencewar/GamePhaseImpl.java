@@ -10,8 +10,10 @@ public class GamePhaseImpl implements GamePhase {
     @Override
     public void execute(final Game game) {
 	for (final WorkBench workBench : game.getAllWorkBenches()) {
-	    workBench.addElementToStorage(Utils.randomEnum(Element.class));
-	    workBench.addElementToStorage(Utils.randomEnum(Element.class));
+	    if (phase == Phase.Discovery) {
+		workBench.addElementToStorage(Utils.randomEnum(Element.class));
+		workBench.addElementToStorage(Utils.randomEnum(Element.class));
+	    }
 	}
     }
 
